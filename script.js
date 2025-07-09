@@ -89,32 +89,70 @@ window.addEventListener('scroll', () => {
     });
 });
 
+// === Animation d'apparition sur toutes les sections ===
+document.addEventListener('DOMContentLoaded', () => {
+    // Appliquer la classe d'animation à toutes les sections principales
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('section-animate');
+    });
+    // Observer pour déclencher l'animation
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.section-animate').forEach(section => {
+        sectionObserver.observe(section);
+    });
+});
+
+// === Feedback visuel sur les champs de formulaire ===
+function setFieldState(input, state) {
+    input.classList.remove('success', 'error');
+    if (state) input.classList.add(state);
+}
+
 // Form handling for Talent Network
 const talentForm = document.getElementById('talentForm');
 if (talentForm) {
     talentForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Get form data
         const formData = new FormData(this);
         const data = Object.fromEntries(formData);
-        
-        // Basic validation
-        if (!data.name || !data.email || !data.sector || !data.experience) {
-            showNotification('Please fill in all required fields.', 'error');
-            return;
-        }
-        
-        // Email validation
+        let valid = true;
+        // Validation des champs requis
+        ['name','email','sector','experience'].forEach(id => {
+            const input = this.querySelector(`[name="${id}"]`);
+            if (!data[id]) {
+                setFieldState(input, 'error');
+                valid = false;
+            } else {
+                setFieldState(input, 'success');
+            }
+        });
+        // Email
+        const emailInput = this.querySelector('[name="email"]');
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.email)) {
-            showNotification('Please enter a valid email address.', 'error');
+        if (data.email && !emailRegex.test(data.email)) {
+            setFieldState(emailInput, 'error');
+            valid = false;
+        }
+        if (!valid) {
+            showNotification('Merci de remplir tous les champs obligatoires.', 'error');
             return;
         }
-        
-        // Simulate form submission
-        showNotification('Thank you! Your profile has been submitted successfully. We will be in touch soon.', 'success');
+        showNotification('Merci ! Votre profil a bien été soumis.', 'success');
         this.reset();
+        this.querySelectorAll('.success, .error').forEach(el => el.classList.remove('success','error'));
+    });
+    // Feedback instantané
+    talentForm.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', function() {
+            setFieldState(this, this.value ? 'success' : 'error');
+        });
     });
 }
 
@@ -123,27 +161,36 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Get form data
         const formData = new FormData(this);
         const data = Object.fromEntries(formData);
-        
-        // Basic validation
-        if (!data.contactName || !data.contactEmail || !data.subject || !data.contactMessage) {
-            showNotification('Please fill in all required fields.', 'error');
-            return;
-        }
-        
-        // Email validation
+        let valid = true;
+        ['contactName','contactEmail','subject','contactMessage'].forEach(id => {
+            const input = this.querySelector(`[name="${id}"]`);
+            if (!data[id]) {
+                setFieldState(input, 'error');
+                valid = false;
+            } else {
+                setFieldState(input, 'success');
+            }
+        });
+        const emailInput = this.querySelector('[name="contactEmail"]');
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.contactEmail)) {
-            showNotification('Please enter a valid email address.', 'error');
+        if (data.contactEmail && !emailRegex.test(data.contactEmail)) {
+            setFieldState(emailInput, 'error');
+            valid = false;
+        }
+        if (!valid) {
+            showNotification('Merci de remplir tous les champs obligatoires.', 'error');
             return;
         }
-        
-        // Simulate form submission
-        showNotification('Thank you! Your message has been sent successfully. We will get back to you soon.', 'success');
+        showNotification('Merci ! Votre message a bien été envoyé.', 'success');
         this.reset();
+        this.querySelectorAll('.success, .error').forEach(el => el.classList.remove('success','error'));
+    });
+    contactForm.querySelectorAll('input, select, textarea').forEach(input => {
+        input.addEventListener('input', function() {
+            setFieldState(this, this.value ? 'success' : 'error');
+        });
     });
 }
 
@@ -294,24 +341,10 @@ document.head.appendChild(style);
 
 // File upload preview for CV
 const cvInput = document.getElementById('cv');
-if (cvInput) {
-    cvInput.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-            if (file.type !== 'application/pdf') {
-                showNotification('Please upload a PDF file.', 'error');
-                this.value = '';
-                return;
-            }
-            
-            if (file.size > 5 * 1024 * 1024) { // 5MB limit
-                showNotification('File size must be less than 5MB.', 'error');
-                this.value = '';
-                return;
-            }
-            
-            showNotification(`File "${file.name}" selected successfully.`, 'success');
-        }
+const cvFilename = document.getElementById('cv-filename');
+if (cvInput && cvFilename) {
+    cvInput.addEventListener('change', function() {
+        cvFilename.textContent = this.files.length ? this.files[0].name : 'Aucun fichier choisi';
     });
 }
 
@@ -374,6 +407,22 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
         section.classList.add('reveal');
     });
+});
+
+// Locomotive clients carousel duplication for infinite scroll
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.querySelector('.clients-track');
+  if (track) {
+    // Duplicate logos for seamless infinite scroll
+    const logos = Array.from(track.children);
+    logos.forEach(logo => {
+      const clone = logo.cloneNode(true);
+      track.appendChild(clone);
+    });
+    // Supprimer tout effet de pause au survol
+    track.addEventListener('mouseenter', e => { track.style.animationPlayState = 'running'; });
+    track.addEventListener('mouseleave', e => { track.style.animationPlayState = 'running'; });
+  }
 });
 
 // Mobile-specific optimizations
@@ -454,4 +503,26 @@ function requestTick() {
     }
 }
 
-window.addEventListener('scroll', requestTick, { passive: true }); 
+window.addEventListener('scroll', requestTick, { passive: true });
+
+// Effet scroll sur le header
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 30) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+}); 
+
+document.querySelectorAll('.nav-link[href="#expertise"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    setTimeout(() => {
+      const subtitles = document.getElementById('expertise-subtitles');
+      if (subtitles) {
+        subtitles.style.display = 'block';
+        subtitles.classList.add('reveal');
+      }
+    }, 400);
+  });
+}); 

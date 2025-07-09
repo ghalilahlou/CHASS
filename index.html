@@ -47,40 +47,36 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="images/logo/backrond.mp4" type="video/mp4">
+  Votre navigateur ne supporte pas la vidéo HTML5.
+</video>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="#" id="logo-link">
-                    <img src="images/logo/logop.png" alt="Nexa Partners" class="logo-image">
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#expertise" class="nav-link">Our Expertise</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#clients" class="nav-link">Meet Our Clients</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#talent" class="nav-link">Join Our Talent Network</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
+    <nav class="navbar new-navbar">
+      <div class="nav-content">
+        <a href="#" class="nav-logo">
+          <img src="images/logo/newlogo.png" alt="Nexa Partners" class="logo-image" />
+        </a>
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-dropdown">
+            <a href="#expertise" class="nav-link">Expertise</a>
+            <ul class="dropdown-menu">
+              <li><a href="#expertise" class="dropdown-link">Strategy & Management Consulting</a></li>
+              <li><a href="#expertise" class="dropdown-link">Financial Services & Private Equity</a></li>
+              <li><a href="#expertise" class="dropdown-link">Tech & Digital</a></li>
+              <li><a href="#expertise" class="dropdown-link">Industrials</a></li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+          </li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
@@ -94,8 +90,8 @@
                 </p>
                 <p class="hero-location">We're based in Casablanca, but our reach is international</p>
                 <div class="hero-buttons">
-                    <a href="#expertise" class="btn btn-primary">Discover Our Expertise</a>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                    <a href="#expertise" class="btn btn-glass">Discover Our Expertise</a>
+                    <a href="#contact" class="btn btn-ghost">Get in Touch</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -111,6 +107,65 @@
                     <div class="floating-card card-3">
                         <i class="fas fa-globe"></i>
                         <span>Global Reach</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Us</h2>
+                    <p class="about-intro">Nexa Partners is a boutique executive search firm based in Casablanca, dedicated to helping organisations attract and retain top-tier leadership and high-impact talent. We focus on delivering thoughtful, precise, and committed recruitment solutions for companies operating in competitive, fast-evolving sectors — including consulting, finance, and technology.</p>
+                    
+                    <p>Our approach is deliberately selective. We engage only in a limited number of searches at a time, allowing us to invest fully in each mandate and build long-term partnerships with our clients and candidates. Every assignment is approached with discretion, agility, and a deep understanding of the strategic value of human capital.</p>
+                    
+                    <div class="philosophy">
+                        <h3>Our Philosophy</h3>
+                        <p>We believe that great recruitment goes far beyond matching a resume to a job description. It's about identifying individuals whose trajectory, values, and potential align with the long-term vision of the organisation. We take the time to understand not just the role — but the culture, the team dynamics, and the challenges ahead.</p>
+                        
+                        <div class="philosophy-points">
+                            <div class="philosophy-point">
+                                <i class="fas fa-search"></i>
+                                <div>
+                                    <h4>Rigour</h4>
+                                    <p>Thorough analysis, direct approach, and tailored methodology</p>
+                                </div>
+                            </div>
+                            <div class="philosophy-point">
+                                <i class="fas fa-handshake"></i>
+                                <div>
+                                    <h4>Engagement</h4>
+                                    <p>Strong commitment to follow-through and delivery</p>
+                                </div>
+                            </div>
+                            <div class="philosophy-point">
+                                <i class="fas fa-lightbulb"></i>
+                                <div>
+                                    <h4>Relevance</h4>
+                                    <p>Insightful market knowledge and sharp judgment</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-leadership">
+                    <div class="leadership-card">
+                        <h3>Leadership</h3>
+                        <div class="leader-info">
+                            <div class="leader-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="leader-details">
+                                <h4>Hicham Boumnade</h4>
+                                <p class="leader-title">Founder & Managing Partner</p>
+                                <p>Hicham founded Nexa Partners with a clear ambition: to offer high-level recruitment services that combine sector expertise with a human-centric approach. He began his career in consulting, advising clients in the financial services industry, before moving into executive search — drawn by his strong interpersonal skills and ability to build trust across senior stakeholders.</p>
+                                <p>With several years of experience leading recruitment assignments for consulting firms, banks, fintechs, and high-growth startups, he brings a sharp understanding of competitive, fast-moving talent markets — along with a firm belief that every career move should be intentional, meaningful, and strategically aligned.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -191,95 +246,18 @@
                 <h2>They Trusted Us</h2>
                 <p>Leading organizations across industries have chosen to partner with us</p>
             </div>
-            <div class="clients-grid">
-                <div class="client-logo" data-delay="0">
-                    <img src="images/clients/Roland Berger.png" alt="Roland Berger" loading="lazy">
-                </div>
-                <div class="client-logo" data-delay="100">
-                    <img src="images/clients/BCG.png" alt="BCG" loading="lazy">
-                </div>
-                <div class="client-logo" data-delay="200">
-                    <img src="images/clients/nuitee.png" alt="Nuitée" loading="lazy">
-                </div>
-                <div class="client-logo" data-delay="300">
-                    <img src="images/clients/safarclick.png" alt="Safarclick" loading="lazy">
-                </div>
-                <div class="client-logo" data-delay="400">
-                    <img src="images/clients/info-ma.png" alt="Info.ma" loading="lazy">
-                </div>
-                <div class="client-logo" data-delay="500">
-                    <img src="images/clients/glovo.png" alt="Glovo" loading="lazy">
-                </div>
-                <div class="client-logo" data-delay="600">
-                    <img src="images/clients/julhiet-sterwen.png" alt="Julhiet Sterwen" loading="lazy">
-                </div>
-                <div class="client-logo" data-delay="700">
-                    <img src="images/clients/coface.png" alt="COFACE" loading="lazy">
-                </div>
-                <div class="client-logo" data-delay="800">
-                    <img src="images/clients/arthur-d-little.png" alt="Arthur D. Little" loading="lazy">
-                </div>
-                <div class="client-logo" data-delay="900">
-                    <img src="images/clients/gsb.png" alt="GSB" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About Us</h2>
-                    <p class="about-intro">Nexa Partners is a boutique executive search firm based in Casablanca, dedicated to helping organisations attract and retain top-tier leadership and high-impact talent. We focus on delivering thoughtful, precise, and committed recruitment solutions for companies operating in competitive, fast-evolving sectors — including consulting, finance, and technology.</p>
-                    
-                    <p>Our approach is deliberately selective. We engage only in a limited number of searches at a time, allowing us to invest fully in each mandate and build long-term partnerships with our clients and candidates. Every assignment is approached with discretion, agility, and a deep understanding of the strategic value of human capital.</p>
-                    
-                    <div class="philosophy">
-                        <h3>Our Philosophy</h3>
-                        <p>We believe that great recruitment goes far beyond matching a resume to a job description. It's about identifying individuals whose trajectory, values, and potential align with the long-term vision of the organisation. We take the time to understand not just the role — but the culture, the team dynamics, and the challenges ahead.</p>
-                        
-                        <div class="philosophy-points">
-                            <div class="philosophy-point">
-                                <i class="fas fa-search"></i>
-                                <div>
-                                    <h4>Rigour</h4>
-                                    <p>Thorough analysis, direct approach, and tailored methodology</p>
-                                </div>
-                            </div>
-                            <div class="philosophy-point">
-                                <i class="fas fa-handshake"></i>
-                                <div>
-                                    <h4>Engagement</h4>
-                                    <p>Strong commitment to follow-through and delivery</p>
-                                </div>
-                            </div>
-                            <div class="philosophy-point">
-                                <i class="fas fa-lightbulb"></i>
-                                <div>
-                                    <h4>Relevance</h4>
-                                    <p>Insightful market knowledge and sharp judgment</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-leadership">
-                    <div class="leadership-card">
-                        <h3>Leadership</h3>
-                        <div class="leader-info">
-                            <div class="leader-avatar">
-                                <i class="fas fa-user-tie"></i>
-                            </div>
-                            <div class="leader-details">
-                                <h4>Hicham Boumnade</h4>
-                                <p class="leader-title">Founder & Managing Partner</p>
-                                <p>Hicham founded Nexa Partners with a clear ambition: to offer high-level recruitment services that combine sector expertise with a human-centric approach. He began his career in consulting, advising clients in the financial services industry, before moving into executive search — drawn by his strong interpersonal skills and ability to build trust across senior stakeholders.</p>
-                                <p>With several years of experience leading recruitment assignments for consulting firms, banks, fintechs, and high-growth startups, he brings a sharp understanding of competitive, fast-moving talent markets — along with a firm belief that every career move should be intentional, meaningful, and strategically aligned.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="clients-locomotive">
+                <div class="clients-track">
+                    <div class="client-logo"><img src="images/clients/BCGnew.png" alt="BCG" loading="lazy"></div>
+                    <div class="client-logo"><img src="images/clients/Roland Bergernew.png" alt="Roland Berger" loading="lazy"></div>
+                    <div class="client-logo"><img src="images/clients/confnew.png" alt="Conf" loading="lazy"></div>
+                    <div class="client-logo"><img src="images/clients/logoglovonew.png" alt="Glovo" loading="lazy"></div>
+                    <div class="client-logo"><img src="images/clients/newarture.png" alt="Arthur D. Little" loading="lazy"></div>
+                    <div class="client-logo"><img src="images/clients/newgsb.png" alt="GSB" loading="lazy"></div>
+                    <div class="client-logo"><img src="images/clients/newjul.png" alt="Julhiet Sterwen" loading="lazy"></div>
+                    <div class="client-logo"><img src="images/clients/newlesinfos.png" alt="Les Infos" loading="lazy"></div>
+                    <div class="client-logo"><img src="images/clients/newnuite.png" alt="Nuitee" loading="lazy"></div>
+                    <div class="client-logo"><img src="images/clients/safarie.png" alt="Safarie" loading="lazy"></div>
                 </div>
             </div>
         </div>
@@ -334,10 +312,11 @@
                             <textarea id="message" name="message" rows="4" placeholder="Tell us about your background, current role, and what you're looking for..."></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="cv">Upload CV (PDF)</label>
-                            <input type="file" id="cv" name="cv" accept=".pdf">
+                            <label for="cv" class="custom-file-label">Upload CV (PDF)</label>
+                            <input type="file" id="cv" name="cv" accept=".pdf" class="custom-file-input" />
+                            <span id="cv-filename" class="file-filename">Aucun fichier choisi</span>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit Profile</button>
+                        <button type="submit" class="btn btn-pill">Submit Profile</button>
                     </form>
                 </div>
             </div>
@@ -412,7 +391,7 @@
                             <label for="contactMessage">Message *</label>
                             <textarea id="contactMessage" name="contactMessage" rows="5" required placeholder="Tell us about your recruitment needs..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-pill">Send Message</button>
                     </form>
                 </div>
             </div>
