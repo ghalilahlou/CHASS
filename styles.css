@@ -2335,3 +2335,172 @@ section, .container, .expertise-card, .commitment-card, .leadership-card, .philo
   box-shadow: none;
 }
 .clients-grid, .clients-grid::before, .client-logo::after { display: none !important; } 
+
+@media (max-width: 700px) {
+  /* Header adaptation */
+  .navbar, .new-navbar {
+    position: fixed;
+    top: 0; left: 0; width: 100vw;
+    z-index: 1002;
+    background: rgba(255,255,255,0.98) !important;
+    box-shadow: 0 2px 16px rgba(30,41,59,0.08);
+    border-bottom: 1.5px solid #e2e8f0;
+    padding: 0.5rem 0 !important;
+  }
+  .nav-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    min-height: 60px;
+  }
+  .nav-logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-logo .logo-image {
+    height: 38px;
+    max-width: 120px;
+    margin: 0 auto;
+    display: block;
+  }
+  .hamburger {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    z-index: 1003;
+    background: none;
+    border: none;
+    margin-left: 0;
+  }
+  .hamburger .bar {
+    width: 28px;
+    height: 4px;
+    background: var(--primary-dark);
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+  .nav-menu {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(30,41,59,0.97);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.2rem;
+    z-index: 1001;
+    padding: 0;
+    box-shadow: none;
+    transition: left 0.3s cubic-bezier(.4,0,.2,1), opacity 0.3s;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .nav-menu.active {
+    left: 0;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-link {
+    color: #fff !important;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 1.2rem 2rem;
+    border-radius: 18px;
+    background: none;
+    text-align: center;
+    width: 100vw;
+    display: block;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-link:hover, .nav-link:focus, .nav-link.active {
+    background: rgba(37,99,235,0.12);
+    color: var(--gold) !important;
+  }
+  .nav-dropdown .dropdown-menu {
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    min-width: unset;
+    border-radius: 0;
+    text-align: center;
+    filter: none;
+    opacity: 1;
+    pointer-events: auto;
+    display: block;
+  }
+  .dropdown-link {
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    background: none;
+    text-align: center;
+    display: block;
+    margin: 0.2rem 0;
+  }
+  .dropdown-link:hover, .dropdown-link:focus {
+    background: rgba(37,99,235,0.18);
+    color: var(--gold);
+  }
+  .nav-actions { display: none !important; }
+
+  /* Clients section adaptation */
+  .clients-locomotive {
+    padding: 2.5rem 0 2.5rem 0;
+    background: linear-gradient(135deg, #e2e8f0 60%, #f8fafc 100%);
+    min-height: 160px;
+  }
+  .clients-track {
+    gap: 2.5rem;
+    animation-duration: 12s !important;
+  }
+  .client-logo {
+    min-width: 120px;
+    min-height: 80px;
+    padding: 0.5rem !important;
+  }
+  .client-logo img {
+    max-width: 120px;
+    max-height: 80px;
+  }
+  .section-header h2 {
+    font-size: 2.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .section-header p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .clients-locomotive {
+    min-height: 120px;
+    padding: 1.5rem 0 1.5rem 0;
+  }
+  .clients-track {
+    gap: 1.2rem;
+    animation-duration: 8s !important;
+  }
+  .client-logo {
+    min-width: 90px;
+    min-height: 60px;
+    padding: 0.2rem !important;
+  }
+  .client-logo img {
+    max-width: 90px;
+    max-height: 60px;
+  }
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+} 
