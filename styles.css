@@ -2337,15 +2337,17 @@ section, .container, .expertise-card, .commitment-card, .leadership-card, .philo
 .clients-grid, .clients-grid::before, .client-logo::after { display: none !important; } 
 
 @media (max-width: 700px) {
-  /* Header adaptation */
+  /* Header plus visible et dynamique */
   .navbar, .new-navbar {
     position: fixed;
     top: 0; left: 0; width: 100vw;
     z-index: 1002;
-    background: rgba(255,255,255,0.98) !important;
-    box-shadow: 0 2px 16px rgba(30,41,59,0.08);
-    border-bottom: 1.5px solid #e2e8f0;
+    background: linear-gradient(90deg, #b0e0e6 60%, #2563eb 100%) !important;
+    box-shadow: 0 4px 24px rgba(37,99,235,0.13);
+    border-bottom: 2.5px solid #2563eb;
     padding: 0.5rem 0 !important;
+    min-height: 60px;
+    transition: background 0.3s, box-shadow 0.3s;
   }
   .nav-content {
     flex-direction: row;
@@ -2361,27 +2363,34 @@ section, .container, .expertise-card, .commitment-card, .leadership-card, .philo
     align-items: center;
   }
   .nav-logo .logo-image {
-    height: 38px;
-    max-width: 120px;
+    height: 44px;
+    max-width: 140px;
     margin: 0 auto;
     display: block;
+    background: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: drop-shadow(0 2px 8px rgba(37,99,235,0.10));
   }
   .hamburger {
     display: flex !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     z-index: 1003;
-    background: none;
-    border: none;
+    background: rgba(255,255,255,0.18);
+    border-radius: 50%;
+    border: 2px solid #2563eb;
     margin-left: 0;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+    transition: background 0.2s, box-shadow 0.2s;
   }
   .hamburger .bar {
     width: 28px;
     height: 4px;
-    background: var(--primary-dark);
+    background: #2563eb;
     margin: 4px 0;
     border-radius: 2px;
     transition: 0.3s;
@@ -2390,7 +2399,7 @@ section, .container, .expertise-card, .commitment-card, .leadership-card, .philo
     position: fixed;
     left: 0; top: 0;
     width: 100vw; height: 100vh;
-    background: rgba(30,41,59,0.97);
+    background: linear-gradient(135deg, #b0e0e6 60%, #2563eb 100%);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -2409,19 +2418,21 @@ section, .container, .expertise-card, .commitment-card, .leadership-card, .philo
   }
   .nav-link {
     color: #fff !important;
-    font-size: 1.3rem;
-    font-weight: 600;
-    padding: 1.2rem 2rem;
-    border-radius: 18px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 1.3rem 2.2rem;
+    border-radius: 22px;
     background: none;
     text-align: center;
     width: 100vw;
     display: block;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    letter-spacing: 0.02em;
   }
   .nav-link:hover, .nav-link:focus, .nav-link.active {
-    background: rgba(37,99,235,0.12);
-    color: var(--gold) !important;
+    background: rgba(37,99,235,0.18);
+    color: #ffe082 !important;
+    transform: scale(1.06);
   }
   .nav-dropdown .dropdown-menu {
     position: static;
@@ -2439,38 +2450,81 @@ section, .container, .expertise-card, .commitment-card, .leadership-card, .philo
   }
   .dropdown-link {
     color: #fff;
-    font-size: 1.1rem;
-    padding: 0.8rem 1.5rem;
-    border-radius: 12px;
+    font-size: 1.15rem;
+    padding: 0.9rem 1.7rem;
+    border-radius: 14px;
     background: none;
     text-align: center;
     display: block;
     margin: 0.2rem 0;
+    font-weight: 600;
   }
   .dropdown-link:hover, .dropdown-link:focus {
-    background: rgba(37,99,235,0.18);
-    color: var(--gold);
+    background: rgba(37,99,235,0.22);
+    color: #ffe082;
+    transform: scale(1.04);
   }
   .nav-actions { display: none !important; }
 
-  /* Clients section adaptation */
+  /* Titres et textes plus grands et centrés */
+  h1, .hero-title { font-size: 2.3rem; text-align: center; }
+  h2, .section-header h2 { font-size: 1.7rem; text-align: center; }
+  h3 { font-size: 1.2rem; text-align: center; }
+  p, .section-header p { font-size: 1.08rem; text-align: center; }
+
+  /* Plus d'espace autour des sections */
+  section { padding: 2.2rem 0.5rem !important; }
+
+  /* Boutons plus larges et arrondis, effet zoom */
+  .btn, .btn-glass, .btn-ghost, .btn-pill {
+    width: 100%;
+    max-width: 320px;
+    margin: 0.5rem auto;
+    border-radius: 22px;
+    font-size: 1.1rem;
+    padding: 1.1rem 0;
+    display: block;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .btn:active, .nav-link:active {
+    transform: scale(1.04);
+    filter: brightness(1.1);
+  }
+
+  /* Carrousel clients plus visible et dynamique */
   .clients-locomotive {
-    padding: 2.5rem 0 2.5rem 0;
-    background: linear-gradient(135deg, #e2e8f0 60%, #f8fafc 100%);
+    background: linear-gradient(135deg, rgba(176,224,230,0.32) 0%, #2563eb 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(37,99,235,0.08);
+    margin: 1.2rem 0;
     min-height: 160px;
+    padding: 2.5rem 0 2.5rem 0;
   }
   .clients-track {
     gap: 2.5rem;
-    animation-duration: 12s !important;
+    animation-duration: 9s !important;
   }
   .client-logo {
+    background: rgba(255,255,255,0.85);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(30,41,59,0.08);
+    margin: 0 0.5rem;
     min-width: 120px;
     min-height: 80px;
     padding: 0.5rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .client-logo img {
     max-width: 120px;
     max-height: 80px;
+    filter: drop-shadow(0 2px 6px rgba(37,99,235,0.10));
+    background: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
   }
   .section-header h2 {
     font-size: 2.1rem;
@@ -2479,6 +2533,10 @@ section, .container, .expertise-card, .commitment-card, .leadership-card, .philo
   .section-header p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+  }
+  /* Overlay powder blue plus visible */
+  section::before {
+    background: linear-gradient(135deg, rgba(176,224,230,0.32) 0%, rgba(176,224,230,0.18) 100%);
   }
 }
 
@@ -2489,7 +2547,7 @@ section, .container, .expertise-card, .commitment-card, .leadership-card, .philo
   }
   .clients-track {
     gap: 1.2rem;
-    animation-duration: 8s !important;
+    animation-duration: 6s !important;
   }
   .client-logo {
     min-width: 90px;
@@ -2503,4 +2561,22 @@ section, .container, .expertise-card, .commitment-card, .leadership-card, .philo
   .section-header h2 {
     font-size: 1.5rem;
   }
-} 
+}
+
+section {
+  position: relative;
+  z-index: 1;
+}
+section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(176,224,230,0.18) 0%, rgba(176,224,230,0.12) 100%); /* powder blue */
+  mix-blend-mode: lighten;
+}
+section > * {
+  position: relative;
+  z-index: 1;
+}
